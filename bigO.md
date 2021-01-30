@@ -115,3 +115,17 @@ write a function that calculates the sum of all numbers from 1 up to and includi
 - over all, O(1) <= O(log n) <= O(n) <= O(nlog n) <= O(n^2)
 
 ![big-O Trends Graph](/bigO-trend-graph.png)
+
+### why logarithms when it comes to Big-O Notation.
+
+- certain searching logarithms have logarithmic time complexity
+- efficient sorting algorithms involve logarithms.
+- recursion sometimes involves lagarithmic space complexity.
+
+# 4. recap
+
+- to analyze the performance of an algorithm, we use Big-O Notation
+- Big-O Notation can give us a high level understanding of the time or space complexity of an algorithm
+- Big-O Notation doesnt care about prevision, only about general trends (linear? quadratic? constant?)
+- the time or space complexity (as measured by Big-O) depends only on the algorithm, not the hardware used to run the algorithm
+- Big-O Notation is everywhere in algorithms
