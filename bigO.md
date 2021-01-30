@@ -24,7 +24,7 @@ write a function that calculates the sum of all numbers from 1 up to and includi
             return total;
         }
 
-    - operation of this code is dependant of n not including i++ which is also dependant of n. ie. 100 = 100, 1000 = 1000
+- operation of this code is dependant of n not including i++ which is also dependant of n. ie. 100 = 100, 1000 = 1000
 
 ### solution 2
 
@@ -32,7 +32,7 @@ write a function that calculates the sum of all numbers from 1 up to and includi
             return n * (n+1) / 2
         }
 
-    - this code performs 3 operations (*, +, /) no matter what n is.
+- this code performs 3 operations (\*, +, /) no matter what n is.
 
 ### what does better mean - speed & efficiency in memory > code comprehension & code length
 
@@ -92,7 +92,7 @@ write a function that calculates the sum of all numbers from 1 up to and includi
             return total;
         }
 
-    - in terms of space this algorithm consist of 1 number variable "total", 1 number variable "i", *arr is not considered since it is input. we have constant space O(1)
+- in terms of space this algorithm consist of 1 number variable "total", 1 number variable "i", \*arr is not considered since it is input. we have constant space O(1)
 
 ### example 3
 
@@ -105,7 +105,7 @@ write a function that calculates the sum of all numbers from 1 up to and includi
             return newArr;
         }
 
-    - in terms of space this algorithm consist of 1 number variable "i", 1 array "newArr", *arr is considered since length of newArr is dependant of length of arr. we have linear space O(n)
+- in terms of space this algorithm consist of 1 number variable "i", 1 array "newArr", \*arr is considered since length of newArr is dependant of length of arr. we have linear space O(n)
 
 # 3. logarithms
 
@@ -114,4 +114,4 @@ write a function that calculates the sum of all numbers from 1 up to and includi
 - we'll omit the 2 since base number in big O notation is irrelevant, log === log2
 - over all, O(1) <= O(log n) <= O(n) <= O(nlog n) <= O(n^2)
 
-![Test Image 1](/bigO-trend-graph.png)
+![big-O Trends Graph](/bigO-trend-graph.png)
