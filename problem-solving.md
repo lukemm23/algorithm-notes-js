@@ -39,11 +39,11 @@ write a function which takes two numbers and returns their sum.
 
 UNDERSTANDING
 
-1. implement addition
-2. any 2 numbers, taking in account the language, what kind of numbers, size? decimals?
-3. result of addition, int? float? string?
-4. yes
-5. sum || result
+        1. implement addition
+        2. any 2 numbers, taking in account the language, what kind of numbers, size? decimals?
+        3. result of addition, int? float? string?
+        4. yes
+        5. sum || result
 
 # 2. concrete examples
 
