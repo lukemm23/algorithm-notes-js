@@ -111,9 +111,10 @@ SIMPLIFY
         }
 
 SOLVE
-function charCount(str){
-// make object to return as result
-let result = {};
+
+        function charCount(str){
+            // make object to return as result
+            let result = {};
 
             // make all char in string lowercase
             str.toLowerCase();
