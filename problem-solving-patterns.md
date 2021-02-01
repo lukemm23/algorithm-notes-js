@@ -167,7 +167,7 @@ sumZero([1,2,3]) //undefined
 
 naive solution - because its time complexity O(n^2), space complexity O(1), always try to avoid nested loops.
 
-        function symZero(arr){
+        function sumZero(arr){
             for(let i = 0; i < arr.length; i++){
                 for(let j = i + 1; j < arr.length; j++){
                     if(arr[i] + arr[j] === 0){
