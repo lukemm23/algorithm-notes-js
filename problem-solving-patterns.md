@@ -4,8 +4,8 @@
 
 - frequency counter (1)
 - multiple pointers (2)
-- sliding window
-- divide and conquer (3)
+- sliding window (3)
+- divide and conquer (4)
 - dynamic programming
 - greedy algorithms
 - backtracking
@@ -250,3 +250,131 @@ multiple pointers pattern solution 2
             }
             return i+1;
         }
+
+# 3. sliding window
+
+- this pattern involves creating a window which can either be an array or number from one position to another.
+- depending on a certain condition, the window either increases or closes (and a new window is created)
+- very useful for keeping track of a subset of data in an array/string etc.
+
+### example 5
+
+write a function called maxSubarraySum which accepts an array of integers and a number called n. the function should calculate the maximum sum of n consecutive elements in the array.
+
+maxSubarraySum([1,2,5,2,8,1,5], 2) //10
+maxSubarraySum([1,2,5,2,8,1,5], 4) //17
+maxSubarraySum([4,2,1,6], 1) //6
+maxSubarraySum([4,2,1,6,2], 4) //13
+maxSubarraySum([], 4) //null
+
+naive solution - because its time complexity O(n^2), space complexity O(n), always try to avoid nested loops.
+
+        function maxSubarraySum(arr, num){
+            if(num > arr.length){
+                return null;
+            }
+
+            let max = -Infinity;
+
+            for(let i = 0; i < arr.length - num +1; i++){
+                let temp = 0;
+                for(let j = 0; j < num; j++){
+                    temp += arr[i+j];
+                }
+                if(temp > max){
+                    max = temp
+                }
+            }
+            return max;
+        }
+
+1. account for edge case if window size is greater than arr.length then return null.
+2. set max to negative infinity so temp value will replace max each time temp is greater than max.
+3. loop as window towards end of arr, arr.length - num + 1 accounts for size of window plus 1 for index.
+4. set temp to store the sum as each loop through
+5. set inner loop to perform addition and set temp.
+6. each time if temp is greater than max set max to temp.
+
+sliding window pattern solution - its time complexity O(n), space complexity O(n)
+
+        function maxSubarraySum(arr, num){
+            let maxSum = 0;
+            let tempSum = 0;
+
+            if(num > arr.length){
+                return null;
+            }
+
+            for(let i = 0; i < num; i++){
+                    maxSum += arr[i];
+            }
+
+            tempSum = maxSum
+
+            for(let i = num; i < arr.length; i++){
+                tempSum = tempSum - arr[i-num] + arr[i];
+                maxSum = Math.max(maxSum,tempSum);
+            }
+
+            return maxSum;
+        }
+
+1. account for edge case if window size is greater than arr.length then return null.
+2. loop thru first 3 values only and record sum as maxSum.
+3. set tempSum to first maxSum.
+4. loop thru starting at the next index position which is num, add the new number to tempSum and subtract first number which is arr[i-num]
+5. and set maxSum comparing each new tempSum to maxSum.
+
+# 4. devide and conquer
+
+- this pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
+- this pattern can tremendously decrease time complexity.
+
+### example 6
+
+given a sorted array of integers, write a function called search, that accepts a value and returns the index where the value passed to the function is located. if the value is not found, return -1.
+
+search([1,2,3,4,5,6],4) // 3
+search([1,2,3,4,5,6],6) // 5
+search([1,2,3,4,5,6],11) // -1
+
+naive solution - because its time complexity O(n), (linear search method)
+
+        function search(arr, val){
+            for(let i = 0; i < arr.length; i++){
+                if(arr[i] === val){
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+divide and conquer pattern solution - its time complexity O(log n), (binary search method)
+
+        function search(arr, val){
+            let min = 0;
+            let max = arr.length - 1;
+
+            while(min <= max){
+                let middle = math.floor((min+max) / 2);
+                let currentElement = arr[middle];
+
+                if(arr[middle] < val){
+                    min = middle + 1;
+                }
+                else if(arr[middle] > val){
+                    max = middle - 1;
+                }
+                else{
+                    return middle;
+                }
+            }
+            return -1;
+        }
+
+1. set min and max index, min starting at 0 index, and max starting a last index, arr.length-1
+2. run while min is smaller than max loop, set middle value
+3. if middle is smaller than val then shorten the while loop by setting min to middle + 1
+4. if middle is greater than val then shorten the while loop by setting max to middle -1
+5. then if val equal middle then return middle which is the value.
+6. if while loop finish and nothing returned then return -1 since value is not there.
