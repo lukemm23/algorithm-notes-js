@@ -120,3 +120,7 @@ error message - maximum call stach size exceeded, stack overflow.
 3. if first position value of arr divided by 2 is not 0 mean its an odd value, then push value to newArr
 4. call concat on newArr and run recusion inside concat, slicing the first position value.
 5. the concat for collectOddValues([1,2,3,4,5]) will look like [1], [], [3], [], [5] = [1,3,5]
+
+### pure recursion tips
+
+- for arrays, use methods like slice, the spread operator, and concat that makes copies of arrays so you do not mutate them.
