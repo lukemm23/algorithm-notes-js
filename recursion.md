@@ -124,3 +124,5 @@ error message - maximum call stach size exceeded, stack overflow.
 ### pure recursion tips
 
 - for arrays, use methods like slice, the spread operator, and concat that makes copies of arrays so you do not mutate them.
+- strings are immutable so you will need to use methods like slice, substr, or substring to make copies of strings.
+- to make copies of objects use Object.assign, or the spread operator.
