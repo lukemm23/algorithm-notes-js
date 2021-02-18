@@ -114,7 +114,7 @@ write a function that calculates the sum of all numbers from 1 up to and includi
 - we'll omit the 2 since base number in big O notation is irrelevant, log === log2
 - over all, O(1) <= O(log n) <= O(n) <= O(nlog n) <= O(n^2)
 
-![big-O Trends Graph](/bigO-trend-graph.png)
+![big-O Trends Graph](/images/bigO-trend-graph.png)
 
 ### why logarithms when it comes to Big-O Notation.
 
