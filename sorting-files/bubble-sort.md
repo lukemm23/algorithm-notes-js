@@ -55,7 +55,7 @@
 
 ### down fall
 
-- bubble sort will not quick evaluate but keeps going to finish its whole process even tho sometimes the sorting is already complete unless no swaps detection is implemented
+- bubble sort will not quickly evaluate but keeps going to finish its whole process even tho sometimes the sorting is already complete unless no swaps detection is implemented
 
 ### most optimized method - implementing noSwaps detection to break out of the loop early when sorting complete.
 
