@@ -13,16 +13,18 @@
 
 ### insertion sort example - notice inner for loop j have to be >=0 and arr[j] > currentVal or else go to next value.
 
-        function insertionSort(arr){
-            for(let i=1; i<arr.length; i++){
-                let currentVal = arr[i];
-                for(let j=i-1; j>= 0 && arr[j] > currentVal; j--){
-                    arr[j+1] = arr[j]
-                }
-                arr[j+1] = currentVal;
-            }
-            return arr;
-        }
+```js
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let currentVal = arr[i];
+    for (let j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+      arr[j + 1] = arr[j];
+    }
+    arr[j + 1] = currentVal;
+  }
+  return arr;
+}
+```
 
 ### Big O of insertion sort
 

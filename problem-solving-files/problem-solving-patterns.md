@@ -25,19 +25,21 @@ same([1,2,3], [1,4,4]) // must be same frequency
 
 naive solution - because its O(n^2), always try to avoid nested loops. (indexOf is a loop)
 
-        function same(arr1, arr2){
-           if(arr1.length !== arr2.length){
-               return false;
-           }
+```js
+function same(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
 
-           for(let i = 0; i < arr.length; i++){
-                let correctIndex = arr2.indexOf(arr1[i] ** 2)
-                if(correctIndex === -1){
-                    return false;
-                }
-                arr2.splice(correctIndex, 1)
-            }
-        }
+  for (let i = 0; i < arr.length; i++) {
+    let correctIndex = arr2.indexOf(arr1[i] ** 2);
+    if (correctIndex === -1) {
+      return false;
+    }
+    arr2.splice(correctIndex, 1);
+  }
+}
+```
 
 1. if the length of 2 arrays arent the same return false
 2. loop thru array1
@@ -49,32 +51,34 @@ naive solution - because its O(n^2), always try to avoid nested loops. (indexOf 
 
 frequency counter pattern solution - 3 seperate loops is always better than 1 nested loop
 
-        function same(arr1, arr2){
-            if(arr1.length !== arr2.length){
-               return false;
-           }
+```js
+function same(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
 
-           let frequencyCounter1 = {}
-           let frequencyCounter2 = {}
+  let frequencyCounter1 = {};
+  let frequencyCounter2 = {};
 
-           for(let val of arr1){
-               frequencyCounter1[val] = (frenquencyCounter1[val] || 0) + 1
-           }
-           for(let val of arr2){
-               frequencyCounter2[val] = (frenquencyCounter2[val] || 0) + 1
-           }
+  for (let val of arr1) {
+    frequencyCounter1[val] = (frenquencyCounter1[val] || 0) + 1;
+  }
+  for (let val of arr2) {
+    frequencyCounter2[val] = (frenquencyCounter2[val] || 0) + 1;
+  }
 
-            for(let key in frequencyCounter1){
-                if(!(key ** 2 in frequencyCounter2)){
-                    return false;
-                }
-                if(frequencyCounter2[key ** 2] !== frequencyCounter1[key]){
-                    return false;
-                }
-            }
+  for (let key in frequencyCounter1) {
+    if (!(key ** 2 in frequencyCounter2)) {
+      return false;
+    }
+    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+      return false;
+    }
+  }
 
-            return true
-        }
+  return true;
+}
+```
 
 1. if the length of 2 arrays arent the same return false
 2. set empty frequency counter 1 and 2
@@ -98,59 +102,62 @@ validAnagram('texttwisttime','timetwisttext') //true
 
 frequency counter pattern solution 1
 
-        function validAnagram(first, second){
-            if(first.length !== second.length){
-                return false
-            }
+```js
+function validAnagram(first, second) {
+  if (first.length !== second.length) {
+    return false;
+  }
 
-            const lookup = {};
+  const lookup = {};
 
-            for(let i = 0; i<first.length; i++){
-                let letter = first[i]
-                lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
-            }
+  for (let i = 0; i < first.length; i++) {
+    let letter = first[i];
+    lookup[letter] ? (lookup[letter] += 1) : (lookup[letter] = 1);
+  }
 
-            for(let i = 0; i<second.length; i++){
-                let letter = second[i]
-                if(!lookup[letter]){
-                    return false;
-                }else{
-                    lookup[letter] -= 1;
-                }
-            }
-            return true;
-        }
-        console.log(validAnagram('texttwisttime', 'timetwisttext'))
+  for (let i = 0; i < second.length; i++) {
+    let letter = second[i];
+    if (!lookup[letter]) {
+      return false;
+    } else {
+      lookup[letter] -= 1;
+    }
+  }
+  return true;
+}
+console.log(validAnagram('texttwisttime', 'timetwisttext'));
+```
 
 frequency counter pattern solution 2
 
-        function validAnagram(str1, str2){
-            if(str1.length !== str2.length){
-                return false;
-            }
+```js
+function validAnagram(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
 
-            let freqCounter1 = {}
-            let freqCounter2 = {}
+  let freqCounter1 = {};
+  let freqCounter2 = {};
 
-            for (val of str1){
-                freqCounter1[val] = (freqCounter1[val] || 0) + 1
-            }
-            for (val of str2){
-                freqCounter2[val] = (freqCounter2[val] || 0) + 1
-            }
+  for (val of str1) {
+    freqCounter1[val] = (freqCounter1[val] || 0) + 1;
+  }
+  for (val of str2) {
+    freqCounter2[val] = (freqCounter2[val] || 0) + 1;
+  }
 
-            for(let key in freqCounter1){
-                if(!(key in freqCounter2)){
-                    return false;
-                }
-                if(freqCounter2[key] !== freqCounter1[key]){
-                    return false;
-                }
-            }
-        return true
-
-        }
-        console.log(validAnagram('texttwisttime', 'timetwisttext'))
+  for (let key in freqCounter1) {
+    if (!(key in freqCounter2)) {
+      return false;
+    }
+    if (freqCounter2[key] !== freqCounter1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(validAnagram('texttwisttime', 'timetwisttext'));
+```
 
 # 2. multiple pointers
 
@@ -167,34 +174,38 @@ sumZero([1,2,3]) //undefined
 
 naive solution - because its time complexity O(n^2), space complexity O(1), always try to avoid nested loops.
 
-        function sumZero(arr){
-            for(let i = 0; i < arr.length; i++){
-                for(let j = i + 1; j < arr.length; j++){
-                    if(arr[i] + arr[j] === 0){
-                        return [arr[i], arr[j]];
-                    }
-            }
-            }
-        }
+```js
+function sumZero(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === 0) {
+        return [arr[i], arr[j]];
+      }
+    }
+  }
+}
+```
 
 multiple pointers pattern solution - its time complexity O(n), space complexity O(1)
 
-         function sumZero(arr){
-            let left = 0;
-            let right = arr.length -1;
+```js
+function sumZero(arr) {
+  let left = 0;
+  let right = arr.length - 1;
 
-            while(left < right){
-                let sum = arr[left] + arr[right];
+  while (left < right) {
+    let sum = arr[left] + arr[right];
 
-                if(sum === 0){
-                    return [arr[left], arr[right]];
-                }else if(sum > 0){
-                    right --;
-                }else{
-                    left++;
-                }
-            }
-        }
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    } else if (sum > 0) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+}
+```
 
 1. set left pointer from left at first position 0
 2. set right pointer from right at last position length - 1
@@ -215,41 +226,45 @@ countUniqueValues([-2,-1,-1,0,1]) //4
 
 multiple pointers pattern solution 1
 
-        function countUniqueValues(arr){
-            let pt1 = 0;
-            let pt2 = 1;
-            let count = 0;
-            if(arr.length === 0){
-                return count
-            }
-            while(pt2 <= arr.length){
-                if(pt2 === arr.length){
-                    count = pt1 + 1;
-                    return count
-                }
-                if(arr[pt1] === arr[pt2]){
-                    pt2 ++;
-                }else if(arr[pt1] !== arr[pt2]){
-                    pt1 ++;
-                    arr[pt1] = arr[pt2];
-                }
-            }
-        }
+```js
+function countUniqueValues(arr) {
+  let pt1 = 0;
+  let pt2 = 1;
+  let count = 0;
+  if (arr.length === 0) {
+    return count;
+  }
+  while (pt2 <= arr.length) {
+    if (pt2 === arr.length) {
+      count = pt1 + 1;
+      return count;
+    }
+    if (arr[pt1] === arr[pt2]) {
+      pt2++;
+    } else if (arr[pt1] !== arr[pt2]) {
+      pt1++;
+      arr[pt1] = arr[pt2];
+    }
+  }
+}
+```
 
 multiple pointers pattern solution 2
 
-        function countUniqueValues(arr){
-            if(arr.length === 0) return 0;
-            let i = 0;
+```js
+function countUniqueValues(arr) {
+  if (arr.length === 0) return 0;
+  let i = 0;
 
-            for(let j = 1; j < arr.length; j++){
-                if(arr[i] !== arr[j]){
-                    i++;
-                    arr[i] = arr[j]
-                }
-            }
-            return i+1;
-        }
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[i] !== arr[j]) {
+      i++;
+      arr[i] = arr[j];
+    }
+  }
+  return i + 1;
+}
+```
 
 # 3. sliding window
 
@@ -269,24 +284,26 @@ maxSubarraySum([], 4) //null
 
 naive solution - because its time complexity O(n^2), space complexity O(n), always try to avoid nested loops.
 
-        function maxSubarraySum(arr, num){
-            if(num > arr.length){
-                return null;
-            }
+```js
+function maxSubarraySum(arr, num) {
+  if (num > arr.length) {
+    return null;
+  }
 
-            let max = -Infinity;
+  let max = -Infinity;
 
-            for(let i = 0; i < arr.length - num +1; i++){
-                let temp = 0;
-                for(let j = 0; j < num; j++){
-                    temp += arr[i+j];
-                }
-                if(temp > max){
-                    max = temp
-                }
-            }
-            return max;
-        }
+  for (let i = 0; i < arr.length - num + 1; i++) {
+    let temp = 0;
+    for (let j = 0; j < num; j++) {
+      temp += arr[i + j];
+    }
+    if (temp > max) {
+      max = temp;
+    }
+  }
+  return max;
+}
+```
 
 1. account for edge case if window size is greater than arr.length then return null.
 2. set max to negative infinity so temp value will replace max each time temp is greater than max.
@@ -297,27 +314,29 @@ naive solution - because its time complexity O(n^2), space complexity O(n), alwa
 
 sliding window pattern solution - its time complexity O(n), space complexity O(n)
 
-        function maxSubarraySum(arr, num){
-            let maxSum = 0;
-            let tempSum = 0;
+```js
+function maxSubarraySum(arr, num) {
+  let maxSum = 0;
+  let tempSum = 0;
 
-            if(num > arr.length){
-                return null;
-            }
+  if (num > arr.length) {
+    return null;
+  }
 
-            for(let i = 0; i < num; i++){
-                    maxSum += arr[i];
-            }
+  for (let i = 0; i < num; i++) {
+    maxSum += arr[i];
+  }
 
-            tempSum = maxSum
+  tempSum = maxSum;
 
-            for(let i = num; i < arr.length; i++){
-                tempSum = tempSum - arr[i-num] + arr[i];
-                maxSum = Math.max(maxSum,tempSum);
-            }
+  for (let i = num; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - num] + arr[i];
+    maxSum = Math.max(maxSum, tempSum);
+  }
 
-            return maxSum;
-        }
+  return maxSum;
+}
+```
 
 1. account for edge case if window size is greater than arr.length then return null.
 2. loop thru first 3 values only and record sum as maxSum.
@@ -340,37 +359,39 @@ search([1,2,3,4,5,6],11) // -1
 
 naive solution - because its time complexity O(n), (linear search method)
 
-        function search(arr, val){
-            for(let i = 0; i < arr.length; i++){
-                if(arr[i] === val){
-                    return i;
-                }
-            }
-            return -1;
-        }
+```js
+function search(arr, val) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === val) {
+      return i;
+    }
+  }
+  return -1;
+}
+```
 
 divide and conquer pattern solution - its time complexity O(log n), (binary search method)
 
-        function search(arr, val){
-            let min = 0;
-            let max = arr.length - 1;
+```js
+function search(arr, val) {
+  let min = 0;
+  let max = arr.length - 1;
 
-            while(min <= max){
-                let middle = Math.floor((min+max) / 2);
-                let currentElement = arr[middle];
+  while (min <= max) {
+    let middle = Math.floor((min + max) / 2);
+    let currentElement = arr[middle];
 
-                if(arr[middle] < val){
-                    min = middle + 1;
-                }
-                else if(arr[middle] > val){
-                    max = middle - 1;
-                }
-                else{
-                    return middle;
-                }
-            }
-            return -1;
-        }
+    if (arr[middle] < val) {
+      min = middle + 1;
+    } else if (arr[middle] > val) {
+      max = middle - 1;
+    } else {
+      return middle;
+    }
+  }
+  return -1;
+}
+```
 
 1. set min and max index, min starting at 0 index, and max starting a last index, arr.length-1
 2. run while min is smaller than max loop, set middle value

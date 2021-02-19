@@ -82,15 +82,17 @@ write and function which takes in a string and return the counts of each charact
 
 BREAKDOWN
 
-        function charCount(str){
-            // make object to return as result
-            // make all char in string lowercase
-            // loop through string
-                // if the char is a num/str and is a key in object, add 1 to count
-                // if the char is a num/str and not in object,  add it to object and set value to 1
-                // if the char is not a num/str ie. space, period, etc. dont do anything
-            // return result
-        }
+```js
+function charCount(str) {
+  // make object to return as result
+  // make all char in string lowercase
+  // loop through string
+  // if the char is a num/str and is a key in object, add 1 to count
+  // if the char is a num/str and not in object,  add it to object and set value to 1
+  // if the char is not a num/str ie. space, period, etc. dont do anything
+  // return result
+}
+```
 
 # 4. solve or simplify - if you cant solve, solve a simpler problem.
 
@@ -103,40 +105,43 @@ BREAKDOWN
 
 SIMPLIFY
 
-        function charCount(str){
-           // how to manipulate str case?
-           // how to loop through the str?
-           // how to write conditional statements for account for all scenarios?
-           // how to manipulate the object?
-        }
+```js
+function charCount(str) {
+  // how to manipulate str case?
+  // how to loop through the str?
+  // how to write conditional statements for account for all scenarios?
+  // how to manipulate the object?
+}
+```
 
 SOLVE
 
-        function charCount(str){
-            // make object to return as result
-            let result = {};
+```js
+function charCount(str) {
+  // make object to return as result
+  let result = {};
 
-            // make all char in string lowercase
-            str.toLowerCase();
+  // make all char in string lowercase
+  str.toLowerCase();
 
-            // loop through string
-            for(i=0; i<=str.length; i++){
-                let char = str[i]
-                if(result[char] > 0){
-                    // if the char is a num/str AND is a key in object, add 1 to count
-                    result[char]++;
-                }else{
-                     // if the char is a num/str AND not in object,  add it to object and set value to 1
-                    result[char] = 1;
-                }
+  // loop through string
+  for (i = 0; i <= str.length; i++) {
+    let char = str[i];
+    if (result[char] > 0) {
+      // if the char is a num/str AND is a key in object, add 1 to count
+      result[char]++;
+    } else {
+      // if the char is a num/str AND not in object,  add it to object and set value to 1
+      result[char] = 1;
+    }
+  }
 
-            }
+  // if the char is not a num/str ie. space, period, etc. dont do anything
 
-                // if the char is not a num/str ie. space, period, etc. dont do anything
-
-            // return result
-            return result;
-        }
+  // return result
+  return result;
+}
+```
 
 - the only thing left would be the difficult part, how to deal with none str/num characters. tackle the difficulty and implement into
   rest of the solution.
@@ -155,50 +160,56 @@ SOLVE
 
 first solution
 
-        function charCount(str){
-            let result = {};
-            for(i=0; i<=str.length; i++){
-                let char = str[i].toLowerCase();
-               if(/[a-z0-9]/.test(char)){
-                   if(result[char] > 0){
-                    result[char]++;
-                   }else{
-                       result[char] = 1;
-                   };
-               }
-            }
-            return result;
-        }
+```js
+function charCount(str) {
+  let result = {};
+  for (i = 0; i <= str.length; i++) {
+    let char = str[i].toLowerCase();
+    if (/[a-z0-9]/.test(char)) {
+      if (result[char] > 0) {
+        result[char]++;
+      } else {
+        result[char] = 1;
+      }
+    }
+  }
+  return result;
+}
+```
 
 refactored solution phase 1
 
-        function charCount(str){
-            let result = {};
-            for(char of str){
-                char.toLowerCase();
-                if(/[a-z0-9]/.test(char)){
-                   if(result[char] > 0){
-                    result[char]++;
-                   }else{
-                       result[char] = 1;
-                   };
-               }
-            }
-            return result;
-        }
+```js
+function charCount(str) {
+  let result = {};
+  for (char of str) {
+    char.toLowerCase();
+    if (/[a-z0-9]/.test(char)) {
+      if (result[char] > 0) {
+        result[char]++;
+      } else {
+        result[char] = 1;
+      }
+    }
+  }
+  return result;
+}
+```
 
 refactored solution phase 2
 
-        function charCount(str){
-            let result = {};
-            for(char of str){
-                char.toLowerCase();
-                if(/[a-z0-9]/.test(char)){
-                   result[char] = ++result[char] || 1;
-               }
-            }
-            return result;
-        }
+```js
+function charCount(str) {
+  let result = {};
+  for (char of str) {
+    char.toLowerCase();
+    if (/[a-z0-9]/.test(char)) {
+      result[char] = ++result[char] || 1;
+    }
+  }
+  return result;
+}
+```
 
 other possibilities
 

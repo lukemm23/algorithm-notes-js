@@ -13,9 +13,11 @@
 
 ### getDigit method example
 
-        function getDigit(num,i){
-            return Math.floor(Math.abs(num)/Math.pow(10,i))%10;
-        }
+```js
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+```
 
 ### getDigit notes
 
@@ -26,10 +28,12 @@
 
 ### digitCount method example
 
-        function digitCount(num){
-            if(num===0) return 1;
-            return Math.floor(Math.log10(Math.abs(num))) + 1;
-        }
+```js
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+```
 
 ### digitCount notes
 
@@ -38,13 +42,15 @@
 
 ### mostDigits method example
 
-        function mostDigits(nums){
-            let maxDigit = 0;
-            for(let i = 0; i < nums.length; i++){
-                maxDigits = Math.max(maxDigits, digitCount(num, i));
-            }
-            return maxDigits;
-        }
+```js
+function mostDigits(nums) {
+  let maxDigit = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(num, i));
+  }
+  return maxDigits;
+}
+```
 
 ### mostDigits notes
 
@@ -63,36 +69,38 @@
 
 ### radix sort example
 
-        function getDigit(num,i){
-            return Math.floor(Math.abs(num)/Math.pow(10,i))%10;
-        }
+```js
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
 
-        function digitCount(num){
-            if(num===0) return 1;
-            return Math.floor(Math.log10(Math.abs(num))) + 1;
-        }
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
 
-        function mostDigits(nums){
-            let maxDigit = 0;
-            for(let i = 0; i < nums.length; i++){
-                maxDigits = Math.max(maxDigits, digitCount(num, i));
-            }
-            return maxDigits;
-        }
+function mostDigits(nums) {
+  let maxDigit = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(num, i));
+  }
+  return maxDigits;
+}
 
-        function radixSort(nums){
-            let maxDigitCount = mostDigits(nums);
+function radixSort(nums) {
+  let maxDigitCount = mostDigits(nums);
 
-            for(let k = 0; k < maxDigitCount; k++){
-                let digitBuckets = array.from({length:10}, ()=>[])
-                for(let i =0; i< nums.length; i++){
-                    let digit = getDigits(num[i], k);
-                    digitBuckets[digit].push(nums[i]);
-                }
-                nums = [].concat(...digitBuckets);
-            }
-            return nums;
-        }
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = array.from({ length: 10 }, () => []);
+    for (let i = 0; i < nums.length; i++) {
+      let digit = getDigits(num[i], k);
+      digitBuckets[digit].push(nums[i]);
+    }
+    nums = [].concat(...digitBuckets);
+  }
+  return nums;
+}
+```
 
 ### big O of radix sort
 

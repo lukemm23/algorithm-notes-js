@@ -20,15 +20,17 @@
 
 ### example 1 time complexity: O(n)
 
-        function linearSearch(arr, val){
-            for(let i = 0; i < arr.length; i++){
-                if(arr[i] === val){
-                    return i
-                }
-            }
+```js
+function linearSearch(arr, val) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === val) {
+      return i;
+    }
+  }
 
-            return -1;
-        }
+  return -1;
+}
+```
 
 ### binary search
 
@@ -50,45 +52,47 @@
 
 binary solution variation 1
 
-        function binarySearch(arr, val){
-            let min = 0;
-            let max = arr.length - 1;
+```js
+function binarySearch(arr, val) {
+  let min = 0;
+  let max = arr.length - 1;
 
-            while(min <= max){
-                let middle = Math.floor((min+max) / 2);
-                let currentElement = arr[middle];
+  while (min <= max) {
+    let middle = Math.floor((min + max) / 2);
+    let currentElement = arr[middle];
 
-                if(arr[middle] < val){
-                    min = middle + 1;
-                }
-                else if(arr[middle] > val){
-                    max = middle - 1;
-                }
-                else{
-                    return middle;
-                }
-            }
-            return -1;
-        }
+    if (arr[middle] < val) {
+      min = middle + 1;
+    } else if (arr[middle] > val) {
+      max = middle - 1;
+    } else {
+      return middle;
+    }
+  }
+  return -1;
+}
+```
 
 binary solution variation 2
 
-        function binarySearch(arr, val){
-            let start = 0;
-            let end = arr.length - 1;
-            let middle = Math.floor((start+end) / 2);
+```js
+function binarySearch(arr, val) {
+  let start = 0;
+  let end = arr.length - 1;
+  let middle = Math.floor((start + end) / 2);
 
-            while(arr[middle] !== val && start <= end){
-                if(val < arr[middle]){
-                    end = middle - 1;
-                }else{
-                    start = middle + 1;
-                }
-                middle = Math.floor((start+end) / 2);
-            }
+  while (arr[middle] !== val && start <= end) {
+    if (val < arr[middle]) {
+      end = middle - 1;
+    } else {
+      start = middle + 1;
+    }
+    middle = Math.floor((start + end) / 2);
+  }
 
-            return arr[middle] === val ? middle : -1;
-        }
+  return arr[middle] === val ? middle : -1;
+}
+```
 
 ### naive string search
 
@@ -106,17 +110,19 @@ binary solution variation 2
 
 ### example 3 naive string search: time complexity O(N^2)
 
-        function searchNaive(long, short){
-            let count = 0;
-            for(let i = 0; i < long.length; i++){
-                for(let j = 0; j < short.length; j++){
-                   if(short[j] !== long[i+j]){
-                       break
-                   }
-                   if(j === short.length-1){
-                       count++;
-                   }
-                }
-            }
-            return count;
-        }
+```js
+function searchNaive(long, short) {
+  let count = 0;
+  for (let i = 0; i < long.length; i++) {
+    for (let j = 0; j < short.length; j++) {
+      if (short[j] !== long[i + j]) {
+        break;
+      }
+      if (j === short.length - 1) {
+        count++;
+      }
+    }
+  }
+  return count;
+}
+```

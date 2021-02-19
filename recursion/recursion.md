@@ -26,50 +26,60 @@ a process (a function in our case) that calls inself, JSON.parse & JSON.stringif
 
 ### example 1 recursion loop
 
-        function countDown(num){
-            if(num <= 0){
-                console.log("All done!");
-                return;
-            }
+```js
+function countDown(num) {
+  if (num <= 0) {
+    console.log('All done!');
+    return;
+  }
 
-            console.log(num);
-            num --;
-            countDown(num);
-        }
+  console.log(num);
+  num--;
+  countDown(num);
+}
+```
 
 ### example 2 for loop
 
-        function countDown(num){
-            for(let i =0; i > 0; i--){
-                console.log(i);
-            }
+```js
+function countDown(num) {
+  for (let i = 0; i > 0; i--) {
+    console.log(i);
+  }
 
-            console.log('All done!');
-        }
+  console.log('All done!');
+}
+```
 
 ### example 3
 
-        function sumRange(num){
-            if(num === 1) return 1;
-            return num + sumRange(num-1);
-        }
+```js
+function sumRange(num) {
+  if (num === 1) return 1;
+  return num + sumRange(num - 1);
+}
+```
 
 ### example 4 factorial iteratively
 
-        function factorial(num){
-            let total = 1
-              for(let i = num; i > 0; i--){
-                total *= i
-            }
-            return total;
-        }
+```js
+function factorial(num) {
+  let total = 1;
+  for (let i = num; i > 0; i--) {
+    total *= i;
+  }
+  return total;
+}
+```
 
 ### example 4 factorial recursively
 
-        function factorial(num){
-            if(num === 1) return 1
-            return num * factorial(num-1)
-        }
+```js
+function factorial(num) {
+  if (num === 1) return 1;
+  return num * factorial(num - 1);
+}
+```
 
 ### common pitfalls
 
@@ -80,40 +90,44 @@ error message - maximum call stach size exceeded, stack overflow.
 
 ### helper method recursion
 
-        function collectOddValues(arr){
-            let result = []
+```js
+function collectOddValues(arr) {
+  let result = [];
 
-            function helper(helperInput){
-                if(helperInput.length === 0){
-                    return;
-                }
-                if(helperInput[0] % 2 !== 0){
-                    result.push(helperInput[0])
-                }
-                helper(helperInput.slice(1))
-            }
+  function helper(helperInput) {
+    if (helperInput.length === 0) {
+      return;
+    }
+    if (helperInput[0] % 2 !== 0) {
+      result.push(helperInput[0]);
+    }
+    helper(helperInput.slice(1));
+  }
 
-            helper(arr)
+  helper(arr);
 
-            return result;
-        }
+  return result;
+}
+```
 
 ### pure method recursion
 
-        function collectOddValues(arr){
-            let NewArr = []
+```js
+function collectOddValues(arr) {
+  let NewArr = [];
 
-            if(arr.length === 0){
-                return newArr;
-            }
+  if (arr.length === 0) {
+    return newArr;
+  }
 
-            if(arr[0] % 2 !== 0){
-                newArr.push(arr[0]);
-            }
+  if (arr[0] % 2 !== 0) {
+    newArr.push(arr[0]);
+  }
 
-            newArr = newArr.concat(collectOddValues(arr.slice(1)));
-            return newArr;
-        }
+  newArr = newArr.concat(collectOddValues(arr.slice(1)));
+  return newArr;
+}
+```
 
 1. set new array variable.
 2. if input array length is zero end recursion with base case, return newArr

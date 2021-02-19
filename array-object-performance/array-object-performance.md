@@ -8,11 +8,13 @@
 
 ### example 1
 
-        let instructor = {
-            firstName: "kelly",
-            isInstructor: true,
-            favoriteNumbers: [1,2,3,4]
-        }
+```js
+let instructor = {
+  firstName: 'kelly',
+  isInstructor: true,
+  favoriteNumbers: [1, 2, 3, 4],
+};
+```
 
 ### when to use objects
 
@@ -37,8 +39,10 @@
 
 ### example 2
 
-        let names = ["Michael", "Melissa", "Andrea"];
-        let values = [true, [], {}, 2, "awesome"];
+```js
+let names = ['Michael', 'Melissa', 'Andrea'];
+let values = [true, [], {}, 2, 'awesome'];
+```
 
 ### when to use arrays
 
