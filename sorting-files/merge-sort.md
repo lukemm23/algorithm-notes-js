@@ -96,8 +96,8 @@
 
 ### big O of merge sort
 
-O(n log n)
-O(n) - for the comparisons of number of arrays
-O(log n) - for spliting arrays
+- O(n log n)
+- O(n) - for the comparisons of number of arrays
+- O(log n) - for spliting arrays
 
 ![merge sort](/images/merge-sort.png)
