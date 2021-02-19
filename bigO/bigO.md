@@ -16,21 +16,25 @@ write a function that calculates the sum of all numbers from 1 up to and includi
 
 ### solution 1
 
-        function addUpTo(n){
-            let total = 0;
-            for(let i = 1; i <= n ; i++){
-                total += i;
-            }
-            return total;
-        }
+```js
+function addUpTo(n) {
+  let total = 0;
+  for (let i = 1; i <= n; i++) {
+    total += i;
+  }
+  return total;
+}
+```
 
 - operation of this code is dependant of n not including i++ which is also dependant of n. ie. 100 = 100, 1000 = 1000
 
 ### solution 2
 
-        function addUpTo(n){
-            return n * (n+1) / 2
-        }
+```js
+function addUpTo(n) {
+  return (n * (n + 1)) / 2;
+}
+```
 
 - this code performs 3 operations (\*, +, /) no matter what n is.
 
@@ -45,10 +49,12 @@ write a function that calculates the sum of all numbers from 1 up to and includi
 
 ### speed testing - solution 2 is way faster!
 
-        let t1 = performance.now();
-        addUpTo(1000000000);
-        let t2 = performance.now();
-        console.log(`time elapsed: ${(t2-t1)/1000} seconds.`)
+```js
+let t1 = performance.now();
+addUpTo(1000000000);
+let t2 = performance.now();
+console.log(`time elapsed: ${(t2 - t1) / 1000} seconds.`);
+```
 
 ### summary
 
@@ -83,27 +89,31 @@ write a function that calculates the sum of all numbers from 1 up to and includi
 
 ### example 2
 
-        function sum(arr){
-            let total = 0;
-            for(let i = 0; i <= arr.length; i++){
-                total += arr[i];
-            }
+```js
+function sum(arr) {
+  let total = 0;
+  for (let i = 0; i <= arr.length; i++) {
+    total += arr[i];
+  }
 
-            return total;
-        }
+  return total;
+}
+```
 
 - in terms of space this algorithm consist of 1 number variable "total", 1 number variable "i", \*arr is not considered since it is input. we have constant space O(1)
 
 ### example 3
 
-        function double(arr){
-            let newArr = [];
-            for(let i = 0; i <= arr.length; i++){
-                newArr.push(2 * arr[i]);
-            }
+```js
+function double(arr) {
+  let newArr = [];
+  for (let i = 0; i <= arr.length; i++) {
+    newArr.push(2 * arr[i]);
+  }
 
-            return newArr;
-        }
+  return newArr;
+}
+```
 
 - in terms of space this algorithm consist of 1 number variable "i", 1 array "newArr", \*arr is considered since length of newArr is dependant of length of arr. we have linear space O(n)
 
