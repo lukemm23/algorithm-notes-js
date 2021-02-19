@@ -17,7 +17,7 @@
 
 ### example 1
 
-write and function called same, which accepts two arrays. the function should return true if every value in the array has it's corresponding value squared in the second array. the frequency of values must be the same.
+write a function called same, which accepts two arrays. the function should return true if every value in the array has it's corresponding value squared in the second array. the frequency of values must be the same.
 
 same([1,2,3], [4,1,9]) //true
 same([1,2,3], [1,9]) // false
@@ -30,7 +30,7 @@ naive solution - because its O(n^2), always try to avoid nested loops. (indexOf 
                return false;
            }
 
-           for(i = 0; i < arr.length; i++){
+           for(let i = 0; i < arr.length; i++){
                 let correctIndex = arr2.indexOf(arr1[i] ** 2)
                 if(correctIndex === -1){
                     return false;
